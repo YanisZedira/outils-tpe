@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aperçu Google : tester son titre et sa description | YZ</title>
+<meta name="description" content="Testez le titre et la meta description d’une page avant de la publier : aperçu du résultat Google, compteur de caractères et alerte de troncature.">
+<link rel="canonical" href="https://yz-automation.fr/outils/apercu-google">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aperçu Google : tester son titre et sa description | YZ">
+<meta property="og:description" content="Testez le titre et la meta description d’une page avant de la publier : aperçu du résultat Google, compteur de caractères et alerte de troncature.">
+<meta property="og:url" content="https://yz-automation.fr/outils/apercu-google">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aperçu Google","url":"https://yz-automation.fr/outils/apercu-google","description":"Testez le titre et la meta description d’une page avant de la publier : aperçu du résultat Google, compteur de caractères et alerte de troncature.","applicationCategory":"DeveloperApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Aperçu Google","item":"https://yz-automation.fr/outils/apercu-google"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle est la longueur idéale d’un titre pour Google ?","acceptedAnswer":{"@type":"Answer","text":"Entre 50 et 60 caractères, soit environ 580 pixels de large. C’est la largeur affichée sur ordinateur avant troncature. Mieux vaut un titre de 55 caractères complet qu’un titre de 70 coupé au milieu d’un mot."}},{"@type":"Question","name":"La meta description compte-t-elle pour le classement ?","acceptedAnswer":{"@type":"Answer","text":"Pas directement. Elle n’entre pas dans le classement, mais elle influence le taux de clic : à position égale, un résultat plus convaincant reçoit plus de visites."}},{"@type":"Question","name":"Pourquoi Google n’affiche-t-il pas ma description ?","acceptedAnswer":{"@type":"Answer","text":"Google choisit parfois un extrait de la page qu’il estime plus proche de la recherche. Cela arrive quand la description est absente, trop courte, ou éloignée de ce que l’internaute a tapé."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Aperçu Google</p>
+  <h1>Aperçu Google : testez votre titre et votre description</h1>
+  <p class="lead">Écrivez le titre et la description d’une page pour voir le résultat tel qu’il apparaîtra dans Google, avec la longueur en caractères et en pixels.</p>
+
+  <section class="card tool" aria-label="Aperçu Google">
+    <div class="grid">
+      <label class="full">Titre de la page <span id="tc" class="note"></span><input id="g-title" value="Plombier à Cergy : dépannage en 1 heure, devis offert" autocomplete="off"></label>
+      <label class="full">Description <span id="dc" class="note"></span><textarea id="g-desc">Fuite, chauffe-eau, débouchage : intervention en 1 heure à Cergy et dans le Val-d'Oise. Prix annoncé avant de commencer, 4,9/5 sur 120 avis.</textarea></label>
+      <label class="full">Adresse de la page<input id="g-url" value="https://exemple.fr/plombier-cergy" inputmode="url" autocomplete="off"></label>
+    </div>
+    <div class="serp" aria-label="Aperçu du résultat Google">
+      <div class="u" id="pu"></div>
+      <div class="t" id="pt"></div>
+      <div class="d" id="pd"></div>
+    </div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Les longueurs à viser</h2>
+    <div class="table"><table>
+      <thead><tr><th>Élément</th><th>Repère</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+        <tr><td>Titre</td><td>50 à 60 caractères, environ 580 pixels</td><td>Au-delà, Google coupe ou réécrit le titre</td></tr>
+        <tr><td>Description</td><td>120 à 155 caractères</td><td>Sur téléphone, l'affichage est plus court encore</td></tr>
+      </tbody>
+    </table></div>
+    <p>Google ne compte pas les caractères mais la largeur en pixels : un « W » prend plus de place qu'un « i ». L'outil mesure donc les deux. L'aperçu reste une estimation, car Google ajuste l'affichage selon l'écran et la recherche.</p>
+    <h2>Ce qui donne envie de cliquer</h2>
+    <ul>
+      <li><strong>Le mot recherché au début du titre</strong>, suivi de la ville pour une activité locale.</li>
+      <li><strong>Une raison concrète :</strong> un prix de départ, un délai, une note d'avis, une garantie.</li>
+      <li><strong>Un titre différent pour chaque page.</strong> Deux pages au même titre se font concurrence.</li>
+      <li><strong>Une description qui répond à la recherche</strong>, pas un slogan.</li>
+    </ul>
+    <p>Google peut afficher un autre texte que votre description s'il juge qu'un passage de la page répond mieux à la recherche. C'est fréquent et sans gravité.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Quelle est la longueur idéale d’un titre pour Google ?</h3>
+    <p>Entre 50 et 60 caractères, soit environ 580 pixels de large. C’est la largeur affichée sur ordinateur avant troncature. Mieux vaut un titre de 55 caractères complet qu’un titre de 70 coupé au milieu d’un mot.</p>
+    <h3>La meta description compte-t-elle pour le classement ?</h3>
+    <p>Pas directement. Elle n’entre pas dans le classement, mais elle influence le taux de clic : à position égale, un résultat plus convaincant reçoit plus de visites.</p>
+    <h3>Pourquoi Google n’affiche-t-il pas ma description ?</h3>
+    <p>Google choisit parfois un extrait de la page qu’il estime plus proche de la recherche. Cela arrive quand la description est absente, trop courte, ou éloignée de ce que l’internaute a tapé.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/seo-technique-local">Référencement local : diagnostic offert</a></li>
+      <li><a href="/ressources/blog/combien-de-temps-pour-etre-reference-sur-google">Combien de temps pour être référencé sur Google ?</a></li>
+      <li><a href="/ressources/blog/seo-technique-site-vitrine-12-points">SEO technique d’un site vitrine : les 12 points</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générer ses données structurées locales</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Des pages que Google montre et que l’on clique</h2>
+    <p>Titres, descriptions, pages locales et fiche Google revus ensemble, avec un suivi mensuel des positions et des appels.</p>
+    <a class="btn primary" href="/seo-technique-local">Demander un diagnostic</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+var ctx = document.createElement('canvas').getContext('2d');
+function width(text, font) { ctx.font = font; return ctx.measureText(text).width; }
+function cut(text, font, max) {
+  if (width(text, font) <= max) return text;
+  var out = text;
+  while (out.length > 1 && width(out + ' ...', font) > max) out = out.slice(0, -1);
+  return out.replace(/\s+\S*$/, '') + ' ...';
+}
+function state(el, len, px, maxPx, min) {
+  var ok = px <= maxPx && len >= min;
+  el.textContent = '(' + len + ' caractères, ' + Math.round(px) + ' px sur ' + maxPx + (px > maxPx ? ' : trop long, sera coupé' : len < min ? ' : un peu court' : ' : bonne longueur') + ')';
+  el.className = 'note ' + (ok ? 'ok' : 'warn');
+}
+function render() {
+  var t = $('g-title').value.trim(), d = $('g-desc').value.trim().replace(/\s+/g, ' '), u = $('g-url').value.trim();
+  var tf = '20px Arial', df = '14px Arial';
+  state($('tc'), t.length, width(t, tf), 580, 30);
+  state($('dc'), d.length, width(d, df), 920, 70);
+  $('pt').textContent = cut(t, tf, 580) || 'Titre de la page';
+  $('pd').textContent = cut(d, df, 920) || 'Description de la page.';
+  var m = u.match(/^(https?:\/\/)?([^\/]+)(\/.*)?$/i);
+  $('pu').textContent = m ? m[2] + (m[3] && m[3] !== '/' ? ' › ' + m[3].split('/').filter(Boolean).join(' › ') : '') : u;
+}
+document.addEventListener('input', render);
+render();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

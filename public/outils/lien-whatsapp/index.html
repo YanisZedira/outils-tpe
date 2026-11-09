@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Créer un lien WhatsApp avec message et QR code | YZ</title>
+<meta name="description" content="Créez un lien WhatsApp cliquable vers votre numéro, avec un message déjà écrit et son QR code. Pour un site, une fiche Google ou une carte de visite.">
+<link rel="canonical" href="https://yz-automation.fr/outils/lien-whatsapp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Créer un lien WhatsApp avec message et QR code | YZ">
+<meta property="og:description" content="Créez un lien WhatsApp cliquable vers votre numéro, avec un message déjà écrit et son QR code. Pour un site, une fiche Google ou une carte de visite.">
+<meta property="og:url" content="https://yz-automation.fr/outils/lien-whatsapp">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur de lien WhatsApp","url":"https://yz-automation.fr/outils/lien-whatsapp","description":"Créez un lien WhatsApp cliquable vers votre numéro, avec un message déjà écrit et son QR code. Pour un site, une fiche Google ou une carte de visite.","applicationCategory":"UtilitiesApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Générateur de lien WhatsApp","item":"https://yz-automation.fr/outils/lien-whatsapp"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mon client doit-il enregistrer mon numéro pour m’écrire ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le lien ouvre directement la discussion, sans passer par le carnet d’adresses. C’est ce qui le rend plus efficace qu’un numéro à recopier."}},{"@type":"Question","name":"Le lien fonctionne-t-il avec WhatsApp Business ?","acceptedAnswer":{"@type":"Answer","text":"Oui, il fonctionne de la même façon avec un compte WhatsApp classique et un compte WhatsApp Business. Seul le numéro compte."}},{"@type":"Question","name":"Peut-on répondre automatiquement sur WhatsApp ?","acceptedAnswer":{"@type":"Answer","text":"WhatsApp Business propose un message d’accueil et un message d’absence. Pour répondre aux questions, qualifier la demande et proposer un rendez-vous, il faut un agent relié à l’interface professionnelle de WhatsApp."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Générateur de lien WhatsApp</p>
+  <h1>Créer un lien WhatsApp, avec message et QR code</h1>
+  <p class="lead">Saisissez votre numéro et, si vous le souhaitez, un message de départ. Vous obtenez un lien qui ouvre directement la discussion, et le QR code qui va avec.</p>
+
+  <section class="card tool" aria-label="Générateur de lien WhatsApp">
+    <div class="grid">
+      <label>Numéro WhatsApp<input id="w-tel" inputmode="tel" value="06 12 34 56 78" autocomplete="off"></label>
+      <label>Pays du numéro<select id="w-cc"><option value="33">France (+33)</option><option value="32">Belgique (+32)</option><option value="41">Suisse (+41)</option><option value="352">Luxembourg (+352)</option><option value="1">Canada (+1)</option><option value="212">Maroc (+212)</option><option value="213">Algérie (+213)</option><option value="216">Tunisie (+216)</option></select></label>
+      <label class="full">Message déjà écrit (facultatif)<textarea id="w-msg">Bonjour, je souhaite un devis pour</textarea></label>
+    </div>
+    <pre id="link" aria-label="Lien WhatsApp généré"></pre>
+    <div class="actions"><button class="primary" type="button" id="copy">Copier le lien</button><a class="btn" id="open" rel="noopener" target="_blank">Tester le lien</a><button type="button" id="png">Télécharger le QR code</button></div>
+    <p class="center" style="margin:18px 0 0"><canvas id="qr" width="480" height="480" style="width:200px;border:1px solid var(--line);border-radius:12px" aria-label="QR code du lien WhatsApp"></canvas></p>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Comment fonctionne un lien WhatsApp</h2>
+    <p>Le lien prend la forme <code>https://wa.me/</code> suivi du numéro au format international, sans le signe plus, sans espace et sans le zéro initial. Pour un mobile français 06 12 34 56 78, cela donne <code>wa.me/33612345678</code>. Sur téléphone, il ouvre l'application. Sur ordinateur, il ouvre WhatsApp Web.</p>
+    <p>Le message déjà écrit apparaît dans le champ de saisie de votre client, qui peut le modifier avant de l'envoyer. Rien ne part sans son action.</p>
+    <h2>Où le placer</h2>
+    <ul>
+      <li><strong>Sur votre site</strong>, en bouton près du téléphone.</li>
+      <li><strong>Sur votre fiche Google</strong>, dans les liens de contact.</li>
+      <li><strong>En QR code</strong> sur une carte de visite, une vitrine, un véhicule ou un devis papier.</li>
+      <li><strong>Dans votre signature e-mail</strong> et vos profils de réseaux sociaux.</li>
+    </ul>
+    <p>Utilisez de préférence un numéro WhatsApp Business : il sépare les échanges professionnels de vos conversations personnelles et permet un message d'accueil.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Mon client doit-il enregistrer mon numéro pour m’écrire ?</h3>
+    <p>Non. Le lien ouvre directement la discussion, sans passer par le carnet d’adresses. C’est ce qui le rend plus efficace qu’un numéro à recopier.</p>
+    <h3>Le lien fonctionne-t-il avec WhatsApp Business ?</h3>
+    <p>Oui, il fonctionne de la même façon avec un compte WhatsApp classique et un compte WhatsApp Business. Seul le numéro compte.</p>
+    <h3>Peut-on répondre automatiquement sur WhatsApp ?</h3>
+    <p>WhatsApp Business propose un message d’accueil et un message d’absence. Pour répondre aux questions, qualifier la demande et proposer un rendez-vous, il faut un agent relié à l’interface professionnelle de WhatsApp.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/chatbot-site-internet">Chatbot IA pour site internet</a></li>
+      <li><a href="/agent-vocal-ia">Agent vocal IA : plus aucun appel manqué</a></li>
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Une réponse en quelques secondes, jour et nuit</h2>
+    <p>Un agent IA répond aux messages, pose les bonnes questions et place le rendez-vous dans votre agenda. Dès 390 €.</p>
+    <a class="btn primary" href="/chatbot-site-internet">Voir l’agent de réponse</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script src="/outils/qrcode.js"></script>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+function link() {
+  var d = $('w-tel').value.replace(/\D/g, ''), cc = $('w-cc').value;
+  if (d.indexOf('00') === 0) d = d.slice(2);
+  else if ($('w-tel').value.trim().charAt(0) !== '+' && d.indexOf(cc) !== 0) d = cc + d.replace(/^0/, '');
+  else if (d.charAt(0) === '0') d = cc + d.slice(1);
+  if (d.length < 8) return '';
+  var m = $('w-msg').value.trim();
+  return 'https://wa.me/' + d + (m ? '?text=' + encodeURIComponent(m) : '');
+}
+function render() {
+  var l = link(), c = $('qr'), ctx = c.getContext('2d');
+  $('link').textContent = l || 'Saisissez un numéro complet.';
+  if (l) $('open').href = l; else $('open').removeAttribute('href');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+  if (!l) return;
+  try {
+    var q = qrcode(0, 'M'); q.addData(l); q.make();
+    var n = q.getModuleCount(), cell = Math.max(1, Math.floor(c.width / (n + 8))), off = Math.floor((c.width - cell * n) / 2);
+    ctx.fillStyle = '#000';
+    for (var r = 0; r < n; r++) for (var k = 0; k < n; k++) if (q.isDark(r, k)) ctx.fillRect(off + k * cell, off + r * cell, cell, cell);
+  } catch (e) {}
+}
+document.addEventListener('input', render);
+$('copy').addEventListener('click', function () { var l = link(); if (l) copyText(l, this); });
+$('png').addEventListener('click', function () { if (link()) download('qr-code-whatsapp.png', $('qr').toDataURL('image/png')); });
+render();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

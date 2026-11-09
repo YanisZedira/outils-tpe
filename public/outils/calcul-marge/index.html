@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcul de marge, taux de marque et prix de vente | YZ</title>
+<meta name="description" content="Calculez marge, taux de marge, taux de marque et coefficient à partir de vos prix d’achat et de vente. Trouvez le prix de vente pour un taux visé.">
+<link rel="canonical" href="https://yz-automation.fr/outils/calcul-marge">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calcul de marge, taux de marque et prix de vente | YZ">
+<meta property="og:description" content="Calculez marge, taux de marge, taux de marque et coefficient à partir de vos prix d’achat et de vente. Trouvez le prix de vente pour un taux visé.">
+<meta property="og:url" content="https://yz-automation.fr/outils/calcul-marge">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de marge","url":"https://yz-automation.fr/outils/calcul-marge","description":"Calculez marge, taux de marge, taux de marque et coefficient à partir de vos prix d’achat et de vente. Trouvez le prix de vente pour un taux visé.","applicationCategory":"FinanceApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Calculateur de marge","item":"https://yz-automation.fr/outils/calcul-marge"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer un prix de vente avec 30 % de marge ?","acceptedAnswer":{"@type":"Answer","text":"Précisez d’abord la base. Avec 30 % de taux de marge, multipliez le coût d’achat par 1,30. Avec 30 % de taux de marque, divisez le coût d’achat par 0,70. Pour un achat à 100 €, cela donne 130 € dans le premier cas et 142,86 € dans le second."}},{"@type":"Question","name":"Qu’est-ce qu’un coefficient multiplicateur ?","acceptedAnswer":{"@type":"Answer","text":"C’est le nombre par lequel on multiplie le prix d’achat hors taxes pour obtenir le prix de vente TTC. Un coefficient de 2 signifie qu’un article acheté 50 € HT est vendu 100 € TTC."}},{"@type":"Question","name":"La marge brute est-elle mon bénéfice ?","acceptedAnswer":{"@type":"Answer","text":"Non. Elle doit encore couvrir les frais fixes : loyer, salaires, assurances, logiciels, déplacements. Le bénéfice est ce qui reste une fois ces charges payées."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Calculateur de marge</p>
+  <h1>Calculateur de marge, de taux de marque et de prix de vente</h1>
+  <p class="lead">Saisissez votre prix d’achat et votre prix de vente hors taxes pour obtenir la marge, le taux de marge, le taux de marque et le coefficient multiplicateur.</p>
+
+  <section class="card tool" aria-label="Calculateur de marge">
+    <div class="grid three">
+      <label>Coût d'achat ou de revient HT<input id="cost" inputmode="decimal" value="60"></label>
+      <label>Prix de vente HT<input id="price" inputmode="decimal" value="100"></label>
+      <label>TVA à la vente<select id="vat"><option value="20">20 %</option><option value="10">10 %</option><option value="5.5">5,5 %</option><option value="2.1">2,1 %</option><option value="0">0 %</option></select></label>
+    </div>
+    <div class="out" aria-live="polite">
+      <div><strong id="margin">0 €</strong><span>Marge brute</span></div>
+      <div><strong id="markup">0 %</strong><span>Taux de marge (sur l'achat)</span></div>
+      <div><strong id="rate">0 %</strong><span>Taux de marque (sur la vente)</span></div>
+      <div><strong id="coef">0</strong><span>Coefficient multiplicateur</span></div>
+      <div><strong id="ttc">0 €</strong><span>Prix de vente TTC</span></div>
+      <div><strong id="qty">0</strong><span>Ventes pour 1 000 € de marge</span></div>
+    </div>
+    <h3>Quel prix de vente pour un taux de marque visé ?</h3>
+    <div class="grid">
+      <label>Taux de marque visé, en %<input id="target" inputmode="decimal" value="40"></label>
+      <label>Prix de vente HT à pratiquer<input id="needed" readonly></label>
+    </div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Taux de marge ou taux de marque : la différence</h2>
+    <p>Les deux mesurent la même marge, rapportée à deux bases différentes. Les confondre fausse un prix de vente.</p>
+    <div class="table"><table>
+      <thead><tr><th>Indicateur</th><th>Formule</th><th>Exemple : achat 60 €, vente 100 €</th></tr></thead>
+      <tbody>
+        <tr><td>Marge brute</td><td>prix de vente HT moins coût d'achat HT</td><td>40 €</td></tr>
+        <tr><td>Taux de marge</td><td>marge ÷ coût d'achat</td><td>66,67 %</td></tr>
+        <tr><td>Taux de marque</td><td>marge ÷ prix de vente</td><td>40 %</td></tr>
+        <tr><td>Coefficient multiplicateur</td><td>prix de vente TTC ÷ coût d'achat HT</td><td>2 (avec 20 % de TVA)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Pour viser un taux de marque, la formule est : prix de vente HT = coût d'achat ÷ (1 moins le taux de marque). Avec un achat à 60 € et 40 % de marque : 60 ÷ 0,60 = 100 €. Ajouter 40 % au coût d'achat donnerait 84 €, soit un taux de marque de 28,6 % seulement.</p>
+    <p>Pour un service, remplacez le coût d'achat par votre coût de revient : temps passé multiplié par votre coût horaire, plus les achats et les frais directs.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Comment calculer un prix de vente avec 30 % de marge ?</h3>
+    <p>Précisez d’abord la base. Avec 30 % de taux de marge, multipliez le coût d’achat par 1,30. Avec 30 % de taux de marque, divisez le coût d’achat par 0,70. Pour un achat à 100 €, cela donne 130 € dans le premier cas et 142,86 € dans le second.</p>
+    <h3>Qu’est-ce qu’un coefficient multiplicateur ?</h3>
+    <p>C’est le nombre par lequel on multiplie le prix d’achat hors taxes pour obtenir le prix de vente TTC. Un coefficient de 2 signifie qu’un article acheté 50 € HT est vendu 100 € TTC.</p>
+    <h3>La marge brute est-elle mon bénéfice ?</h3>
+    <p>Non. Elle doit encore couvrir les frais fixes : loyer, salaires, assurances, logiciels, déplacements. Le bénéfice est ce qui reste une fois ces charges payées.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/ressources/blog/prix-automatisation-entreprise-2026">Prix d’une automatisation en entreprise</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculer ce que coûtent vos tâches répétitives</a></li>
+      <li><a href="/power-bi-dashboard">Suivre ses marges dans un tableau de bord</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Vos marges suivies sans tableur</h2>
+    <p>Ventes, achats et heures réunis dans un tableau de bord mis à jour seul, pour voir quelle prestation rapporte vraiment.</p>
+    <a class="btn primary" href="/power-bi-dashboard">Voir les tableaux de bord</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+function calc() {
+  var c = num($('cost').value), p = num($('price').value), v = num($('vat').value) / 100, m = p - c;
+  $('margin').textContent = eur(m);
+  $('markup').textContent = c > 0 ? pct(m / c * 100) : 'n. d.';
+  $('rate').textContent = p > 0 ? pct(m / p * 100) : 'n. d.';
+  $('coef').textContent = c > 0 ? new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(p * (1 + v) / c) : 'n. d.';
+  $('ttc').textContent = eur(p * (1 + v));
+  $('qty').textContent = m > 0 ? String(Math.ceil(1000 / m)) : 'n. d.';
+  var t = num($('target').value) / 100;
+  $('needed').value = c > 0 && t > 0 && t < 1 ? eur(c / (1 - t)) : '';
+}
+document.addEventListener('input', calc);
+calc();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

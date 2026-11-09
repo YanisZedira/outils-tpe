@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Générateur de mot de passe sécurisé, sans envoi | YZ</title>
+<meta name="description" content="Générez un mot de passe solide et aléatoire, créé sur votre appareil et jamais transmis. Longueur et caractères au choix, solidité affichée.">
+<link rel="canonical" href="https://yz-automation.fr/outils/mot-de-passe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Générateur de mot de passe sécurisé, sans envoi | YZ">
+<meta property="og:description" content="Générez un mot de passe solide et aléatoire, créé sur votre appareil et jamais transmis. Longueur et caractères au choix, solidité affichée.">
+<meta property="og:url" content="https://yz-automation.fr/outils/mot-de-passe">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur de mot de passe","url":"https://yz-automation.fr/outils/mot-de-passe","description":"Générez un mot de passe solide et aléatoire, créé sur votre appareil et jamais transmis. Longueur et caractères au choix, solidité affichée.","applicationCategory":"SecurityApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Générateur de mot de passe","item":"https://yz-automation.fr/outils/mot-de-passe"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ce générateur garde-t-il une trace de mon mot de passe ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le mot de passe est créé par votre navigateur avec son générateur cryptographique et n’est transmis à aucun serveur. Fermez la page, il disparaît."}},{"@type":"Question","name":"Quelle longueur choisir ?","acceptedAnswer":{"@type":"Answer","text":"Seize caractères au minimum pour un compte courant, vingt ou plus pour la messagerie, la banque et le gestionnaire de mots de passe. Avec un gestionnaire, la longueur ne coûte rien."}},{"@type":"Question","name":"Faut-il changer ses mots de passe régulièrement ?","acceptedAnswer":{"@type":"Answer","text":"Plus par principe. Un mot de passe long, unique et aléatoire n’a besoin d’être changé que s’il a pu fuiter ou si un site signale une intrusion."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Générateur de mot de passe</p>
+  <h1>Générateur de mot de passe sécurisé</h1>
+  <p class="lead">Choisissez la longueur et les types de caractères. Le mot de passe est tiré au hasard par votre navigateur, avec son générateur cryptographique. Il n’est ni envoyé ni conservé.</p>
+
+  <section class="card tool" aria-label="Générateur de mot de passe">
+    <pre id="pw" class="center" style="font-size:18px;margin-top:0" aria-live="polite" aria-label="Mot de passe généré"></pre>
+    <div class="actions" style="justify-content:center"><button class="primary" type="button" id="copy">Copier</button><button type="button" id="again">En générer un autre</button></div>
+    <div class="grid" style="margin-top:16px">
+      <label class="full">Longueur : <span id="lv">20</span> caractères<input id="len" type="range" min="8" max="64" value="20"></label>
+    </div>
+    <p class="checks" style="margin-top:12px">
+      <label><input type="checkbox" id="lo" checked>Minuscules</label>
+      <label><input type="checkbox" id="up" checked>Majuscules</label>
+      <label><input type="checkbox" id="di" checked>Chiffres</label>
+      <label><input type="checkbox" id="sy" checked>Symboles</label>
+      <label><input type="checkbox" id="amb" checked>Éviter les caractères qui se ressemblent (0 et O, 1 et l)</label>
+    </p>
+    <div class="out two" aria-live="polite">
+      <div><strong id="bits">0</strong><span>Bits d'entropie</span></div>
+      <div><strong id="level">.</strong><span>Solidité</span></div>
+    </div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Ce qui fait un bon mot de passe</h2>
+    <ul>
+      <li><strong>La longueur avant tout.</strong> Seize caractères tirés au hasard résistent mieux que huit caractères compliqués.</li>
+      <li><strong>Un mot de passe par compte.</strong> Si un site est piraté, les autres comptes restent protégés.</li>
+      <li><strong>Du hasard réel.</strong> Un prénom suivi d'une année se devine en quelques secondes.</li>
+    </ul>
+    <p>L'entropie, en bits, mesure le nombre de combinaisons possibles : chaque bit supplémentaire double l'effort d'un attaquant. Autour de 80 bits, un mot de passe aléatoire est hors de portée d'une attaque par force brute avec les moyens actuels.</p>
+    <h2>Trois habitudes qui comptent plus que le mot de passe</h2>
+    <ol>
+      <li><strong>Un gestionnaire de mots de passe.</strong> Il retient tout à votre place : vous n'avez qu'un seul mot de passe à mémoriser.</li>
+      <li><strong>La double authentification</strong> sur la messagerie, la banque et les outils de l'entreprise. Elle bloque la plupart des piratages, même si le mot de passe a fuité.</li>
+      <li><strong>Des comptes nominatifs.</strong> Un identifiant partagé par toute l'équipe ne peut pas être retiré à une seule personne.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Ce générateur garde-t-il une trace de mon mot de passe ?</h3>
+    <p>Non. Le mot de passe est créé par votre navigateur avec son générateur cryptographique et n’est transmis à aucun serveur. Fermez la page, il disparaît.</p>
+    <h3>Quelle longueur choisir ?</h3>
+    <p>Seize caractères au minimum pour un compte courant, vingt ou plus pour la messagerie, la banque et le gestionnaire de mots de passe. Avec un gestionnaire, la longueur ne coûte rien.</p>
+    <h3>Faut-il changer ses mots de passe régulièrement ?</h3>
+    <p>Plus par principe. Un mot de passe long, unique et aléatoire n’a besoin d’être changé que s’il a pu fuiter ou si un site signale une intrusion.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/ressources/blog/securiser-agent-ia-injections-fuites">Sécuriser un agent IA contre les injections et les fuites</a></li>
+      <li><a href="/ressources/blog/chatgpt-donnees-clients-regles-pme">Données clients et assistants IA : les règles</a></li>
+      <li><a href="/ressources/blog/claude-mythos">Claude Mythos : ce que cela change pour votre sécurité</a></li>
+      <li><a href="/audit-ia">Audit IA en 5 jours</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Des outils sûrs dès la conception</h2>
+    <p>Accès limités, comptes nominatifs, sauvegardes et journal des actions : chaque automatisation livrée est pensée pour ne donner à l’IA que ce dont elle a besoin.</p>
+    <a class="btn primary" href="/automatisation-ia">Voir la méthode</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+var SETS = { lo: 'abcdefghijklmnopqrstuvwxyz', up: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', di: '0123456789', sy: '!#$%&*+-=?@_' };
+function rand(n) { var lim = Math.floor(4294967296 / n) * n, a = new Uint32Array(1); do { crypto.getRandomValues(a); } while (a[0] >= lim); return a[0] % n; }
+function gen() {
+  var len = parseInt($('len').value, 10), sets = [];
+  $('lv').textContent = String(len);
+  ['lo', 'up', 'di', 'sy'].forEach(function (k) {
+    if (!$(k).checked) return;
+    var s = SETS[k]; if ($('amb').checked) s = s.replace(/[0O1lI]/g, '');
+    sets.push(s);
+  });
+  if (!sets.length) { $('pw').textContent = 'Cochez au moins un type de caractères.'; $('bits').textContent = '0'; $('level').textContent = '.'; return; }
+  var pool = sets.join(''), out, ok, tries = 0;
+  do {
+    out = ''; for (var i = 0; i < len; i++) out += pool.charAt(rand(pool.length));
+    ok = sets.every(function (s) { for (var j = 0; j < out.length; j++) if (s.indexOf(out.charAt(j)) > -1) return true; return false; });
+  } while (!ok && ++tries < 200);
+  var bits = Math.floor(len * Math.log(pool.length) / Math.LN2);
+  $('pw').textContent = out; $('bits').textContent = String(bits);
+  $('level').textContent = bits < 50 ? 'Faible' : bits < 75 ? 'Correcte' : bits < 100 ? 'Solide' : 'Très solide';
+}
+document.addEventListener('input', gen);
+$('again').addEventListener('click', gen);
+$('copy').addEventListener('click', function () { copyText($('pw').textContent, this); });
+gen();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

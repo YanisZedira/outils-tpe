@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcul des pénalités de retard d’une facture | YZ</title>
+<meta name="description" content="Calculez les pénalités de retard d’une facture impayée entre professionnels : jours de retard, intérêts et indemnité forfaitaire de 40 €.">
+<link rel="canonical" href="https://yz-automation.fr/outils/penalites-retard-facture">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calcul des pénalités de retard d’une facture | YZ">
+<meta property="og:description" content="Calculez les pénalités de retard d’une facture impayée entre professionnels : jours de retard, intérêts et indemnité forfaitaire de 40 €.">
+<meta property="og:url" content="https://yz-automation.fr/outils/penalites-retard-facture">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de pénalités de retard","url":"https://yz-automation.fr/outils/penalites-retard-facture","description":"Calculez les pénalités de retard d’une facture impayée entre professionnels : jours de retard, intérêts et indemnité forfaitaire de 40 €.","applicationCategory":"FinanceApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Calculateur de pénalités de retard","item":"https://yz-automation.fr/outils/penalites-retard-facture"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"À partir de quand les pénalités de retard courent-elles ?","acceptedAnswer":{"@type":"Answer","text":"Dès le lendemain de la date d’échéance figurant sur la facture. Aucun rappel n’est nécessaire pour qu’elles soient dues entre professionnels."}},{"@type":"Question","name":"L’indemnité de 40 € s’applique-t-elle à un particulier ?","acceptedAnswer":{"@type":"Answer","text":"Non. L’indemnité forfaitaire pour frais de recouvrement ne concerne que les clients professionnels. Elle est due par facture payée en retard, quel que soit le montant."}},{"@type":"Question","name":"Faut-il vraiment réclamer les pénalités ?","acceptedAnswer":{"@type":"Answer","text":"Elles sont dues même si vous ne les réclamez pas, mais beaucoup d’entreprises y renoncent pour préserver la relation. Les mentionner dans la relance suffit souvent à obtenir le paiement."}},{"@type":"Question","name":"Quelles mentions mettre sur la facture ?","acceptedAnswer":{"@type":"Answer","text":"La date d’échéance, le taux des pénalités de retard et le montant de l’indemnité forfaitaire de 40 € doivent figurer sur la facture. Leur absence est sanctionnable."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Calculateur de pénalités de retard</p>
+  <h1>Calculateur de pénalités de retard sur facture</h1>
+  <p class="lead">Indiquez le montant de la facture, sa date d’échéance et le taux prévu dans vos conditions. L’outil calcule les jours de retard, les pénalités et l’indemnité forfaitaire de recouvrement.</p>
+
+  <section class="card tool" aria-label="Calculateur de pénalités de retard">
+    <div class="grid">
+      <label>Montant TTC de la facture<input id="p-amount" inputmode="decimal" value="1200"></label>
+      <label>Taux annuel des pénalités, en %<input id="p-rate" inputmode="decimal" placeholder="Taux de vos conditions de vente"></label>
+      <label>Date d'échéance<input id="p-due" type="date"></label>
+      <label>Date de paiement ou du jour<input id="p-paid" type="date"></label>
+    </div>
+    <p class="checks" style="margin-top:12px"><label><input type="checkbox" id="p-fee" checked>Ajouter l'indemnité forfaitaire de 40 € (client professionnel)</label></p>
+    <div class="out" aria-live="polite">
+      <div><strong id="days">0</strong><span>Jours de retard</span></div>
+      <div><strong id="pen">0 €</strong><span>Pénalités de retard</span></div>
+      <div><strong id="total">0 €</strong><span>Total dû avec la facture</span></div>
+    </div>
+    <p class="note warn" id="p-msg" role="status" style="margin:10px 0 0"></p>
+    <div class="actions"><button type="button" id="copy">Copier le détail</button></div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>La formule</h2>
+    <p>Pénalités = montant TTC de la facture × taux annuel × nombre de jours de retard ÷ 365. Le retard se compte à partir du lendemain de la date d'échéance inscrite sur la facture.</p>
+    <h2>Ce que prévoit la loi entre professionnels</h2>
+    <ul>
+      <li><strong>Les pénalités sont dues de plein droit</strong>, sans rappel ni mise en demeure, dès le lendemain de l'échéance (article L441-10 du Code de commerce).</li>
+      <li><strong>Le taux figure dans vos conditions de vente et sur vos factures.</strong> Il ne peut pas être inférieur à trois fois le taux d'intérêt légal.</li>
+      <li><strong>Si aucun taux n'est prévu</strong>, s'applique le taux de refinancement de la Banque centrale européenne majoré de 10 points.</li>
+      <li><strong>Une indemnité forfaitaire de 40 €</strong> pour frais de recouvrement s'ajoute par facture payée en retard (article D441-5 du Code de commerce).</li>
+    </ul>
+    <p class="note">Ces règles concernent les ventes entre professionnels. Elles ne s'appliquent pas aux factures adressées à des particuliers. Le taux d'intérêt légal change chaque semestre : relevez le taux en vigueur sur le site de la Banque de France ou sur service-public.fr. Cet outil donne une estimation et ne remplace pas un conseil juridique.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>À partir de quand les pénalités de retard courent-elles ?</h3>
+    <p>Dès le lendemain de la date d’échéance figurant sur la facture. Aucun rappel n’est nécessaire pour qu’elles soient dues entre professionnels.</p>
+    <h3>L’indemnité de 40 € s’applique-t-elle à un particulier ?</h3>
+    <p>Non. L’indemnité forfaitaire pour frais de recouvrement ne concerne que les clients professionnels. Elle est due par facture payée en retard, quel que soit le montant.</p>
+    <h3>Faut-il vraiment réclamer les pénalités ?</h3>
+    <p>Elles sont dues même si vous ne les réclamez pas, mais beaucoup d’entreprises y renoncent pour préserver la relation. Les mentionner dans la relance suffit souvent à obtenir le paiement.</p>
+    <h3>Quelles mentions mettre sur la facture ?</h3>
+    <p>La date d’échéance, le taux des pénalités de retard et le montant de l’indemnité forfaitaire de 40 € doivent figurer sur la facture. Leur absence est sanctionnable.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/ressources/blog/automatiser-relance-impayes-n8n-stripe">Automatiser la relance des impayés</a></li>
+      <li><a href="/ressources/blog/facture-electronique-obligatoire-tpe-pme">Facture électronique obligatoire : le guide</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/automatisation-ia">Automatiser devis, factures et relances</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Des relances qui partent à la bonne date</h2>
+    <p>Trois messages gradués, envoyés automatiquement après l’échéance, avec le détail des pénalités. Vous n’y pensez plus et vos factures rentrent plus vite.</p>
+    <a class="btn primary" href="/automatisation-ia">Automatiser mes relances</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+var iso = function (d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); };
+var today = new Date(), due = new Date(today.getTime() - 30 * 864e5);
+$('p-paid').value = iso(today); $('p-due').value = iso(due);
+function calc() {
+  var m = num($('p-amount').value), r = num($('p-rate').value), a = Date.parse($('p-due').value), b = Date.parse($('p-paid').value);
+  var days = isFinite(a) && isFinite(b) ? Math.max(0, Math.round((b - a) / 864e5)) : 0;
+  var pen = m * r / 100 * days / 365, fee = $('p-fee').checked && days > 0 ? 40 : 0;
+  $('days').textContent = String(days); $('pen').textContent = eur(pen); $('total').textContent = eur(m + pen + fee);
+  $('p-msg').textContent = r > 0 ? '' : 'Saisissez le taux annuel inscrit dans vos conditions générales de vente ou sur la facture.';
+  return 'Facture de ' + eur(m) + ', ' + days + ' jours de retard au taux annuel de ' + pct(r) + ' : pénalités ' + eur(pen) + (fee ? ', indemnité forfaitaire 40,00 €' : '') + ', total dû ' + eur(m + pen + fee) + '.';
+}
+document.addEventListener('input', calc);
+$('copy').addEventListener('click', function () { copyText(calc(), this); });
+calc();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

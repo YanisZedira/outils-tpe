@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compresser une image en WebP ou JPEG, en ligne | YZ</title>
+<meta name="description" content="Réduisez le poids de vos photos pour le web : conversion en WebP ou JPEG et redimensionnement. Les images restent sur votre appareil.">
+<link rel="canonical" href="https://yz-automation.fr/outils/compresser-image">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compresser une image en WebP ou JPEG, en ligne | YZ">
+<meta property="og:description" content="Réduisez le poids de vos photos pour le web : conversion en WebP ou JPEG et redimensionnement. Les images restent sur votre appareil.">
+<meta property="og:url" content="https://yz-automation.fr/outils/compresser-image">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compresseur d’images","url":"https://yz-automation.fr/outils/compresser-image","description":"Réduisez le poids de vos photos pour le web : conversion en WebP ou JPEG et redimensionnement. Les images restent sur votre appareil.","applicationCategory":"MultimediaApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Compresseur d’images","item":"https://yz-automation.fr/outils/compresser-image"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mes photos sont-elles envoyées sur un serveur ?","acceptedAnswer":{"@type":"Answer","text":"Non. La compression est faite par votre navigateur, sur votre appareil. Les images ne quittent pas votre ordinateur ou votre téléphone, ce qui convient aux photos de clients ou de chantiers."}},{"@type":"Question","name":"Quel poids viser pour une image de site internet ?","acceptedAnswer":{"@type":"Answer","text":"Moins de 200 Ko pour une photo en pleine largeur, moins de 80 Ko pour une vignette. Au-dessus de 500 Ko, une image ralentit sensiblement l’affichage sur téléphone."}},{"@type":"Question","name":"WebP ou JPEG : lequel choisir ?","acceptedAnswer":{"@type":"Answer","text":"WebP pour un site internet, car il est plus léger à qualité égale. JPEG quand l’image doit être envoyée par e-mail, déposée sur une plateforme ancienne ou imprimée."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Compresseur d’images</p>
+  <h1>Compresser une image pour le web, en WebP ou JPEG</h1>
+  <p class="lead">Choisissez une ou plusieurs photos. Elles sont redimensionnées et compressées sur votre appareil, sans passer par un serveur. Idéal avant de les mettre sur un site ou une fiche Google.</p>
+
+  <section class="card tool" aria-label="Compresseur d’images">
+    <div class="grid three">
+      <label class="full">Vos images (JPEG, PNG, WebP)<input id="i-files" type="file" accept="image/*" multiple></label>
+      <label>Format de sortie<select id="i-format"><option value="image/webp">WebP (le plus léger)</option><option value="image/jpeg">JPEG (compatible partout)</option></select></label>
+      <label>Largeur maximale<select id="i-width"><option value="800">800 px (vignette)</option><option value="1600" selected>1 600 px (pleine largeur)</option><option value="2400">2 400 px (grand écran)</option><option value="0">Ne pas redimensionner</option></select></label>
+      <label>Qualité : <span id="i-qv">80</span> %<input id="i-q" type="range" min="40" max="95" step="5" value="80"></label>
+    </div>
+    <p class="note" id="i-msg" role="status" style="margin:12px 0 0">Aucune image choisie.</p>
+    <ul class="files" id="i-list"></ul>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pourquoi compresser ses images</h2>
+    <p>Les images représentent souvent plus de la moitié du poids d'une page. Une photo sortie d'un téléphone pèse 3 à 8 Mo, alors que 100 à 300 Ko suffisent pour l'afficher en pleine largeur. Des images trop lourdes ralentissent le site, surtout sur téléphone, et Google tient compte de la vitesse d'affichage.</p>
+    <h2>Quels réglages choisir</h2>
+    <div class="table"><table>
+      <thead><tr><th>Usage</th><th>Largeur</th><th>Format</th><th>Qualité</th></tr></thead>
+      <tbody>
+        <tr><td>Photo en pleine largeur sur un site</td><td>1 600 px</td><td>WebP</td><td>75 à 80 %</td></tr>
+        <tr><td>Vignette, photo de produit</td><td>800 px</td><td>WebP</td><td>75 à 80 %</td></tr>
+        <tr><td>Photo pour une fiche Google ou un e-mail</td><td>1 600 px</td><td>JPEG</td><td>80 à 85 %</td></tr>
+      </tbody>
+    </table></div>
+    <p>Le format WebP est lu par tous les navigateurs récents et pèse en général 25 à 35 % de moins qu'un JPEG de qualité visuelle équivalente. Gardez le JPEG pour les outils qui refusent le WebP.</p>
+    <p class="note">Une image avec un fond transparent perd sa transparence en JPEG : elle est placée sur fond blanc. Le WebP la conserve.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Mes photos sont-elles envoyées sur un serveur ?</h3>
+    <p>Non. La compression est faite par votre navigateur, sur votre appareil. Les images ne quittent pas votre ordinateur ou votre téléphone, ce qui convient aux photos de clients ou de chantiers.</p>
+    <h3>Quel poids viser pour une image de site internet ?</h3>
+    <p>Moins de 200 Ko pour une photo en pleine largeur, moins de 80 Ko pour une vignette. Au-dessus de 500 Ko, une image ralentit sensiblement l’affichage sur téléphone.</p>
+    <h3>WebP ou JPEG : lequel choisir ?</h3>
+    <p>WebP pour un site internet, car il est plus léger à qualité égale. JPEG quand l’image doit être envoyée par e-mail, déposée sur une plateforme ancienne ou imprimée.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/ressources/blog/ameliorer-vitesse-site-core-web-vitals">Améliorer la vitesse de son site</a></li>
+      <li><a href="/creation-site-internet">Création de site internet rapide sur téléphone</a></li>
+      <li><a href="/ressources/blog/fiche-google-business-profile-optimisation-complete">Optimiser sa fiche Google Business Profile</a></li>
+      <li><a href="/outils/apercu-google">Tester son titre et sa description Google</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Un site qui s’affiche en moins de 2 secondes</h2>
+    <p>Images optimisées, code léger, hébergement rapide : chaque site livré est mesuré sur téléphone avant la mise en ligne. Dès 490 €.</p>
+    <a class="btn primary" href="/creation-site-internet">Voir la création de site</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+var urls = [];
+function size(n) { return n > 1048576 ? (n / 1048576).toFixed(2).replace('.', ',') + ' Mo' : Math.max(1, Math.round(n / 1024)) + ' Ko'; }
+function load(file) {
+  return new Promise(function (resolve, reject) {
+    var img = new Image(), u = URL.createObjectURL(file);
+    img.onload = function () { URL.revokeObjectURL(u); resolve(img); };
+    img.onerror = function () { URL.revokeObjectURL(u); reject(new Error('illisible')); };
+    img.src = u;
+  });
+}
+function one(file, mime, maxW, q) {
+  return load(file).then(function (img) {
+    var w = img.naturalWidth, h = img.naturalHeight, r = maxW && w > maxW ? maxW / w : 1;
+    var c = document.createElement('canvas'); c.width = Math.round(w * r); c.height = Math.round(h * r);
+    var ctx = c.getContext('2d');
+    if (mime === 'image/jpeg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); }
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    return new Promise(function (resolve) { c.toBlob(function (b) { resolve({ blob: b, w: c.width, h: c.height }); }, mime, q); });
+  });
+}
+function run() {
+  var files = Array.prototype.slice.call($('i-files').files), mime = $('i-format').value, ext = mime === 'image/webp' ? 'webp' : 'jpg';
+  var maxW = parseInt($('i-width').value, 10), q = parseInt($('i-q').value, 10) / 100, list = $('i-list');
+  $('i-qv').textContent = $('i-q').value;
+  urls.forEach(function (u) { URL.revokeObjectURL(u); }); urls = []; list.textContent = '';
+  if (!files.length) { $('i-msg').textContent = 'Aucune image choisie.'; return; }
+  $('i-msg').textContent = 'Compression en cours...';
+  var before = 0, after = 0;
+  files.reduce(function (p, file) {
+    return p.then(function () { return one(file, mime, maxW, q); }).then(function (res) {
+      var li = document.createElement('li'), info = document.createElement('span'), a = document.createElement('a');
+      if (!res.blob || res.blob.type !== mime) { info.textContent = file.name + ' : ce format n’est pas pris en charge par votre navigateur.'; li.appendChild(info); list.appendChild(li); return; }
+      var u = URL.createObjectURL(res.blob); urls.push(u); before += file.size; after += res.blob.size;
+      var gain = Math.round((1 - res.blob.size / file.size) * 100);
+      info.textContent = file.name + ' : ' + size(file.size) + ' vers ' + size(res.blob.size) + ' (' + (gain >= 0 ? 'moins ' + gain : 'plus ' + -gain) + ' %), ' + res.w + ' × ' + res.h + ' px';
+      a.className = 'btn'; a.href = u; a.download = file.name.replace(/\.[^.]+$/, '') + '.' + ext; a.textContent = 'Télécharger';
+      li.appendChild(info); li.appendChild(a); list.appendChild(li);
+    }, function () {
+      var li = document.createElement('li'); li.textContent = file.name + ' : image illisible.'; list.appendChild(li);
+    });
+  }, Promise.resolve()).then(function () {
+    $('i-msg').textContent = before ? files.length + ' image(s) : ' + size(before) + ' vers ' + size(after) + ', soit ' + Math.round((1 - after / before) * 100) + ' % de moins.' : 'Aucune image traitée.';
+  });
+}
+document.addEventListener('change', run);
+$('i-q').addEventListener('input', function () { $('i-qv').textContent = this.value; });
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

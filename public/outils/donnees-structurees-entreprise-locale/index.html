@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Générateur de données structurées LocalBusiness | YZ</title>
+<meta name="description" content="Générez le code JSON-LD LocalBusiness de votre entreprise : métier, adresse, horaires, zones desservies. À coller sur votre site, sans rien installer.">
+<link rel="canonical" href="https://yz-automation.fr/outils/donnees-structurees-entreprise-locale">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Générateur de données structurées LocalBusiness | YZ">
+<meta property="og:description" content="Générez le code JSON-LD LocalBusiness de votre entreprise : métier, adresse, horaires, zones desservies. À coller sur votre site, sans rien installer.">
+<meta property="og:url" content="https://yz-automation.fr/outils/donnees-structurees-entreprise-locale">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur de données structurées locales","url":"https://yz-automation.fr/outils/donnees-structurees-entreprise-locale","description":"Générez le code JSON-LD LocalBusiness de votre entreprise : métier, adresse, horaires, zones desservies. À coller sur votre site, sans rien installer.","applicationCategory":"DeveloperApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Générateur de données structurées locales","item":"https://yz-automation.fr/outils/donnees-structurees-entreprise-locale"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Les données structurées améliorent-elles le classement Google ?","acceptedAnswer":{"@type":"Answer","text":"Elles ne font pas monter une page à elles seules. Elles aident Google à comprendre l’entreprise et à l’associer à sa fiche d’établissement, et rendent possibles certains affichages enrichis. C’est une base à poser, pas un levier isolé."}},{"@type":"Question","name":"Faut-il mettre ce code sur toutes les pages ?","acceptedAnswer":{"@type":"Answer","text":"La page d’accueil ou la page de contact suffit pour décrire l’entreprise. Si vous avez plusieurs établissements, placez un bloc par établissement sur la page qui lui est dédiée."}},{"@type":"Question","name":"Que faire si je n’ai pas de local ouvert au public ?","acceptedAnswer":{"@type":"Answer","text":"Cochez la case de déplacement chez les clients : la rue n’est pas publiée, seules la ville et les zones desservies le sont. C’est le cas des artisans et des prestataires à domicile."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Générateur de données structurées locales</p>
+  <h1>Générateur de données structurées pour entreprise locale</h1>
+  <p class="lead">Remplissez la fiche de votre entreprise. L’outil produit le code JSON-LD de type LocalBusiness, que Google lit pour comprendre qui vous êtes, où vous travaillez et quand vous êtes ouvert.</p>
+
+  <section class="card tool" aria-label="Générateur de données structurées locales">
+    <div class="grid">
+      <label>Métier<select id="l-type">
+        <option value="LocalBusiness">Entreprise locale (générique)</option><option value="Plumber">Plombier</option><option value="Electrician">Électricien</option><option value="HVACBusiness">Chauffagiste, climatisation</option><option value="RoofingContractor">Couvreur</option><option value="GeneralContractor">Entreprise du bâtiment</option><option value="Locksmith">Serrurier</option><option value="HousePainter">Peintre</option><option value="Restaurant">Restaurant</option><option value="Bakery">Boulangerie</option><option value="HairSalon">Salon de coiffure</option><option value="BeautySalon">Institut de beauté</option><option value="AutoRepair">Garage automobile</option><option value="Dentist">Dentiste</option><option value="Physician">Médecin</option><option value="LegalService">Avocat, service juridique</option><option value="AccountingService">Expert-comptable</option><option value="RealEstateAgent">Agence immobilière</option><option value="Florist">Fleuriste</option><option value="Store">Commerce</option><option value="ProfessionalService">Prestataire de services</option>
+      </select></label>
+      <label>Nom de l'entreprise<input id="l-name" autocomplete="off" value="Nom de l'entreprise"></label>
+      <label>Adresse du site<input id="l-url" inputmode="url" autocomplete="off" value="https://exemple.fr"></label>
+      <label>Téléphone<input id="l-tel" inputmode="tel" autocomplete="off" value="01 23 45 67 89"></label>
+      <label class="full">Description en une phrase<input id="l-desc" autocomplete="off"></label>
+      <label>Rue<input id="l-street" autocomplete="off"></label>
+      <label>Code postal<input id="l-zip" inputmode="numeric" autocomplete="off"></label>
+      <label>Ville<input id="l-city" autocomplete="off"></label>
+      <label>Gamme de prix<select id="l-price"><option value="">Ne pas indiquer</option><option>€</option><option>€€</option><option>€€€</option></select></label>
+      <label class="full">Communes ou zones desservies, séparées par des virgules<input id="l-area" autocomplete="off" placeholder="Cergy, Pontoise, Val-d'Oise"></label>
+      <label>Ouverture en semaine<input id="l-open" type="time" value="09:00"></label>
+      <label>Fermeture en semaine<input id="l-close" type="time" value="18:00"></label>
+    </div>
+    <p class="checks" style="margin-top:12px">
+      <label><input type="checkbox" id="l-sat">Ouvert le samedi aux mêmes horaires</label>
+      <label><input type="checkbox" id="l-hide">Je me déplace chez mes clients (ne pas publier la rue)</label>
+    </p>
+    <pre id="code" aria-label="Code JSON-LD généré"></pre>
+    <div class="actions"><button class="primary" type="button" id="copy">Copier le code</button><a class="btn" href="https://search.google.com/test/rich-results" rel="noopener">Tester dans l'outil de Google</a></div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>À quoi servent ces données</h2>
+    <p>Les données structurées sont un bloc de code invisible pour le visiteur, écrit dans un vocabulaire commun aux moteurs de recherche (schema.org). Elles disent sans ambiguïté le nom de l'entreprise, son métier, son adresse, ses horaires et ses zones d'intervention. Google s'en sert pour relier votre site à votre fiche d'établissement, et les assistants IA pour citer vos coordonnées sans les deviner.</p>
+    <h2>Où coller le code</h2>
+    <ol>
+      <li>Copiez le code généré.</li>
+      <li>Collez-le dans la partie <code>&lt;head&gt;</code> de votre page d'accueil ou de votre page de contact. Sur WordPress, une extension d'insertion de code dans l'en-tête suffit.</li>
+      <li>Vérifiez la page avec l'outil de test des résultats enrichis de Google.</li>
+    </ol>
+    <h2>Trois règles pour ne pas se tromper</h2>
+    <ul>
+      <li><strong>Les mêmes informations que sur votre fiche Google</strong>, au caractère près : nom, téléphone, adresse.</li>
+      <li><strong>Le type le plus précis.</strong> « Plombier » vaut mieux que « Entreprise locale ».</li>
+      <li><strong>Aucune note d'avis ajoutée à la main.</strong> Google ignore les étoiles qu'une entreprise s'attribue sur son propre site, et peut le sanctionner.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Les données structurées améliorent-elles le classement Google ?</h3>
+    <p>Elles ne font pas monter une page à elles seules. Elles aident Google à comprendre l’entreprise et à l’associer à sa fiche d’établissement, et rendent possibles certains affichages enrichis. C’est une base à poser, pas un levier isolé.</p>
+    <h3>Faut-il mettre ce code sur toutes les pages ?</h3>
+    <p>La page d’accueil ou la page de contact suffit pour décrire l’entreprise. Si vous avez plusieurs établissements, placez un bloc par établissement sur la page qui lui est dédiée.</p>
+    <h3>Que faire si je n’ai pas de local ouvert au public ?</h3>
+    <p>Cochez la case de déplacement chez les clients : la rue n’est pas publiée, seules la ville et les zones desservies le sont. C’est le cas des artisans et des prestataires à domicile.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/seo-technique-local">Référencement local : la méthode complète</a></li>
+      <li><a href="/ressources/blog/schema-localbusiness-donnees-structurees-seo-local">Données structurées LocalBusiness : le guide</a></li>
+      <li><a href="/outils/apercu-google">Vérifier son titre et sa description dans Google</a></li>
+      <li><a href="https://yaniszedira.github.io/checklist-seo-local/">Checklist SEO local : 40 points à vérifier</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Votre entreprise en tête sur Google Maps</h2>
+    <p>Fiche Google, pages locales, données structurées et avis : un diagnostic offert, puis un suivi dès 49 € par mois.</p>
+    <a class="btn primary" href="/seo-technique-local">Voir le référencement local</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-tva">Calculateur de TVA</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+function tel(v) { var d = v.replace(/[^+\d]/g, ''); return /^0\d{9}$/.test(d) ? '+33' + d.slice(1) : d; }
+function build() {
+  var v = function (id) { return $(id).value.trim(); };
+  var o = { '@context': 'https://schema.org', '@type': v('l-type'), name: v('l-name') };
+  if (v('l-desc')) o.description = v('l-desc');
+  if (v('l-url')) { o.url = v('l-url'); o['@id'] = v('l-url').replace(/\/$/, '') + '/#entreprise'; }
+  if (v('l-tel')) o.telephone = tel(v('l-tel'));
+  if (v('l-price')) o.priceRange = v('l-price');
+  var a = { '@type': 'PostalAddress' };
+  if (v('l-street') && !$('l-hide').checked) a.streetAddress = v('l-street');
+  if (v('l-zip')) a.postalCode = v('l-zip');
+  if (v('l-city')) a.addressLocality = v('l-city');
+  a.addressCountry = 'FR';
+  if (a.postalCode || a.addressLocality || a.streetAddress) o.address = a;
+  var areas = v('l-area').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+  if (areas.length) o.areaServed = areas.map(function (n) { return { '@type': 'AdministrativeArea', name: n }; });
+  if (v('l-open') && v('l-close')) {
+    var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    if ($('l-sat').checked) days.push('Saturday');
+    o.openingHoursSpecification = [{ '@type': 'OpeningHoursSpecification', dayOfWeek: days, opens: v('l-open'), closes: v('l-close') }];
+  }
+  return '<scr' + 'ipt type="application/ld+json">\n' + JSON.stringify(o, null, 2).replace(/</g, '\\u003c') + '\n</scr' + 'ipt>';
+}
+function render() { $('code').textContent = build(); }
+document.addEventListener('input', render);
+$('copy').addEventListener('click', function () { copyText(build(), this); });
+render();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>

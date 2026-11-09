@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcul TVA : HT vers TTC et TTC vers HT | YZ Automation</title>
+<meta name="description" content="Calculez un prix TTC à partir du HT, ou retrouvez le HT à partir du TTC. Taux français de 20 %, 10 %, 5,5 % et 2,1 %, résultat immédiat.">
+<link rel="canonical" href="https://yz-automation.fr/outils/calcul-tva">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calcul TVA : HT vers TTC et TTC vers HT | YZ Automation">
+<meta property="og:description" content="Calculez un prix TTC à partir du HT, ou retrouvez le HT à partir du TTC. Taux français de 20 %, 10 %, 5,5 % et 2,1 %, résultat immédiat.">
+<meta property="og:url" content="https://yz-automation.fr/outils/calcul-tva">
+<meta property="og:image" content="https://yz-automation.fr/yz-automation-google-business-cover-v2.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/outils/outils.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de TVA","url":"https://yz-automation.fr/outils/calcul-tva","description":"Calculez un prix TTC à partir du HT, ou retrouvez le HT à partir du TTC. Taux français de 20 %, 10 %, 5,5 % et 2,1 %, résultat immédiat.","applicationCategory":"FinanceApplication","operatingSystem":"Tous (navigateur web)","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Yanis Zedira","url":"https://yz-automation.fr/a-propos"},"publisher":{"@type":"Organization","name":"YZ Automation","url":"https://yz-automation.fr"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://yz-automation.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://yz-automation.fr/outils"},{"@type":"ListItem","position":3,"name":"Calculateur de TVA","item":"https://yz-automation.fr/outils/calcul-tva"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer un prix HT à partir du TTC ?","acceptedAnswer":{"@type":"Answer","text":"Divisez le prix TTC par 1 plus le taux. À 20 %, divisez par 1,20. À 10 %, par 1,10. À 5,5 %, par 1,055. Ne retirez pas le pourcentage du prix TTC : le résultat serait faux."}},{"@type":"Question","name":"Quel taux pour un auto-entrepreneur en franchise de TVA ?","acceptedAnswer":{"@type":"Answer","text":"En franchise en base, vous ne facturez pas de TVA : choisissez 0 %. La facture doit porter la mention « TVA non applicable, article 293 B du CGI »."}},{"@type":"Question","name":"Quel taux de TVA pour des travaux chez un particulier ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de la nature des travaux et de l’âge du logement : 20 % par défaut, 10 % pour certains travaux de rénovation dans un logement de plus de deux ans, 5,5 % pour l’amélioration énergétique. Vérifiez les conditions avant d’émettre le devis."}}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="YZ Automation" width="104" height="26"></a>
+  <nav aria-label="Navigation"><a href="/outils">Tous les outils</a><a class="hide" href="/tarifs">Tarifs</a><a class="hide" href="/contact">Contact</a></nav>
+</header>
+<main>
+  <p class="crumb"><a href="/">Accueil</a> / <a href="/outils">Outils</a> / Calculateur de TVA</p>
+  <h1>Calculateur de TVA : HT vers TTC et TTC vers HT</h1>
+  <p class="lead">Saisissez un montant, choisissez le taux et le sens du calcul. Le montant hors taxes, la TVA et le total TTC s’affichent aussitôt.</p>
+
+  <section class="card tool" aria-label="Calculateur de TVA">
+    <div class="grid three">
+      <label>Montant en euros<input id="amount" inputmode="decimal" value="100"></label>
+      <label>Taux de TVA<select id="rate"><option value="20">20 % (taux normal)</option><option value="10">10 % (intermédiaire)</option><option value="5.5">5,5 % (réduit)</option><option value="2.1">2,1 % (particulier)</option><option value="0">0 % (franchise ou exonération)</option></select></label>
+      <label>Le montant saisi est<select id="dir"><option value="ht">hors taxes (HT)</option><option value="ttc">toutes taxes comprises (TTC)</option></select></label>
+    </div>
+    <div class="out" aria-live="polite">
+      <div><strong id="ht">0 €</strong><span>Hors taxes</span></div>
+      <div><strong id="tva">0 €</strong><span>TVA</span></div>
+      <div><strong id="ttc">0 €</strong><span>TTC</span></div>
+    </div>
+    <div class="actions"><button type="button" id="copy">Copier le détail</button></div>
+    <p class="note" style="margin:14px 0 0">Tout se passe dans votre navigateur : rien n'est envoyé ni enregistré sur un serveur.</p>
+  </section>
+
+  <section class="card">
+    <h2>Les formules</h2>
+    <ul>
+      <li><strong>HT vers TTC :</strong> prix TTC = prix HT × (1 + taux). Pour 100 € à 20 % : 100 × 1,20 = 120 €.</li>
+      <li><strong>TTC vers HT :</strong> prix HT = prix TTC ÷ (1 + taux). Pour 120 € à 20 % : 120 ÷ 1,20 = 100 €.</li>
+      <li><strong>Montant de TVA :</strong> prix TTC moins prix HT.</li>
+    </ul>
+    <p>L'erreur la plus fréquente consiste à retirer 20 % du prix TTC pour retrouver le HT. 120 € moins 20 % donnent 96 €, et non 100 €. Il faut diviser par 1,20.</p>
+    <h2>Les taux de TVA en France métropolitaine</h2>
+    <div class="table"><table>
+      <thead><tr><th>Taux</th><th>Exemples d'application</th></tr></thead>
+      <tbody>
+        <tr><td>20 %</td><td>Taux normal : la plupart des biens et des prestations de services</td></tr>
+        <tr><td>10 %</td><td>Restauration sur place, transport de voyageurs, certains travaux de rénovation de logements</td></tr>
+        <tr><td>5,5 %</td><td>Produits alimentaires, livres, travaux d'amélioration énergétique des logements</td></tr>
+        <tr><td>2,1 %</td><td>Médicaments remboursables, presse</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Les conditions d'application de chaque taux sont fixées par le Code général des impôts. En cas de doute sur une prestation, votre expert-comptable ou le site impots.gouv.fr font foi.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions fréquentes</h2>
+    <h3>Comment calculer un prix HT à partir du TTC ?</h3>
+    <p>Divisez le prix TTC par 1 plus le taux. À 20 %, divisez par 1,20. À 10 %, par 1,10. À 5,5 %, par 1,055. Ne retirez pas le pourcentage du prix TTC : le résultat serait faux.</p>
+    <h3>Quel taux pour un auto-entrepreneur en franchise de TVA ?</h3>
+    <p>En franchise en base, vous ne facturez pas de TVA : choisissez 0 %. La facture doit porter la mention « TVA non applicable, article 293 B du CGI ».</p>
+    <h3>Quel taux de TVA pour des travaux chez un particulier ?</h3>
+    <p>Cela dépend de la nature des travaux et de l’âge du logement : 20 % par défaut, 10 % pour certains travaux de rénovation dans un logement de plus de deux ans, 5,5 % pour l’amélioration énergétique. Vérifiez les conditions avant d’émettre le devis.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="/outils/calcul-marge">Calculer sa marge et son prix de vente</a></li>
+      <li><a href="/ressources/blog/automatiser-devis-pme-methode">Automatiser ses devis : la méthode pour une PME</a></li>
+      <li><a href="/ressources/blog/facture-electronique-obligatoire-tpe-pme">Facture électronique obligatoire : le guide TPE et PME</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculer des pénalités de retard</a></li>
+    </ul>
+  </section>
+
+  <section class="card cta">
+    <h2>Vos devis partent tout seuls</h2>
+    <p>À partir d’une demande client, le devis est rédigé avec les bons taux, envoyé, puis relancé. Vous validez, le reste est automatique.</p>
+    <a class="btn primary" href="/automatisation-ia">Automatiser mes devis</a>
+    <a class="btn" href="https://cal.com/yanis-zedira-w1ldf1/15min">Réserver 15 min offertes</a>
+  </section>
+
+  <section>
+    <h2>Les autres outils</h2>
+    <ul class="others">
+      <li><a href="/outils/qr-code">Générateur de QR code</a></li>
+      <li><a href="/outils/calcul-marge">Calculateur de marge</a></li>
+      <li><a href="/outils/signature-email">Générateur de signature e-mail</a></li>
+      <li><a href="/outils/donnees-structurees-entreprise-locale">Générateur de données structurées locales</a></li>
+      <li><a href="/outils/apercu-google">Aperçu Google</a></li>
+      <li><a href="/outils/lien-whatsapp">Générateur de lien WhatsApp</a></li>
+      <li><a href="/outils/penalites-retard-facture">Calculateur de pénalités de retard</a></li>
+      <li><a href="/outils/compresser-image">Compresseur d’images</a></li>
+      <li><a href="/outils/mot-de-passe">Générateur de mot de passe</a></li>
+      <li><a href="/calculateur-temps-perdu">Calculateur du temps perdu</a></li>
+    </ul>
+  </section>
+</main>
+<script>
+(function () {
+var $ = function (id) { return document.getElementById(id); };
+var num = function (v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+var eur = function (n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); };
+var pct = function (n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(n) + ' %'; };
+var copyText = function (text, btn) {
+  var done = function () { if (!btn) return; var t = btn.textContent; btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () {}); return; }
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {} ta.remove();
+};
+var download = function (name, href) { var a = document.createElement('a'); a.download = name; a.href = href; document.body.appendChild(a); a.click(); a.remove(); };
+
+function calc() {
+  var m = num($('amount').value), r = num($('rate').value) / 100, ht, ttc;
+  if ($('dir').value === 'ht') { ht = m; ttc = m * (1 + r); } else { ttc = m; ht = m / (1 + r); }
+  $('ht').textContent = eur(ht); $('tva').textContent = eur(ttc - ht); $('ttc').textContent = eur(ttc);
+  return 'HT : ' + eur(ht) + ' | TVA ' + pct(r * 100) + ' : ' + eur(ttc - ht) + ' | TTC : ' + eur(ttc);
+}
+document.addEventListener('input', calc);
+$('copy').addEventListener('click', function () { copyText(calc(), this); });
+calc();
+})();
+</script>
+<footer>
+  <p>Outils libres de <a href="/">YZ Automation</a>, studio fondé par Yanis Zedira : <a href="/creation-site-internet">création de site internet</a>, <a href="/automatisation-ia">automatisation et agents IA</a>, <a href="/seo-technique-local">référencement local</a>. Code source sous licence MIT sur <a href="https://github.com/YanisZedira/outils-tpe">GitHub</a>.</p>
+  <p><a href="/ressources/blog">Le Journal</a> · <a href="/avis-clients">Avis clients</a> · <a href="/realisations">Réalisations</a> · <a href="/legal">Mentions légales</a></p>
+</footer>
+</body>
+</html>
